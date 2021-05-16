@@ -20,6 +20,12 @@ class Drug:
             drug.clear()
             drug.send_keys(drug_name)
 
+            select_mix = Select(browser.find_element_by_name("ctl00$ContentPlaceHolder1$ddlMixture"))
+            select_mix.select_by_value("N")
+
+            history = browser.find_element_by_xpath('//*[@id="ctl00_ContentPlaceHolder1_rblType_1"]') # history = browser.find_element_by_name("ctl00$ContentPlaceHolder1$rblType") 有問題因為上下兩個 radio 的 name 一樣
+            history.click()
+            
             submit = browser.find_element_by_name("ctl00$ContentPlaceHolder1$btnSubmit")
             submit.click()
 
